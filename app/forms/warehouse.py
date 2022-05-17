@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, DecimalField, HiddenField
+from wtforms import StringField, DecimalField
 from wtforms.validators import ValidationError
 
 def validate_city(form, field):

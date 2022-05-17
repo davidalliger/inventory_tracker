@@ -2,19 +2,27 @@
 <html>
     <head>
         <title>
-            Warehouse #{{ warehouse.id}} - Inventory Tracker
+            {{ item.name }} - Inventory Tracker
         </title>
     </head>
     <body>
         {% include 'navigation.html' %}
         <h1>Inventory Tracker</h1>
-        <h2>Warehouse #{{ warehouse.id}}</h2>
+        <h2>{{ item.name }}</h2>
         <p>
-            Location: {{ warehouse.city }}
+            Name: {{ item.name }}
         </p>
         <p>
-            Maximum Capacity: {{ warehouse.max_volume }} ft<sup>3</sup>
+            Category: {{ item.category }}
         </p>
+        <p>
+            Description: {{ item.description }}
+        </p>
+        {% if warehouse %}
+            <p>
+                Warehouse: {{ warehouse.city }} - #{{ warehouse.id }}
+            </p>
+        {% endif %}
         <p>
             <a href="/warehouses/{{ warehouse.id }}/edit">
                 <button>Edit</button>

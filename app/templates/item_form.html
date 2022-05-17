@@ -10,12 +10,32 @@
         <form action="{{ path }}" method="post">
             {{ form.hidden_tag() }}
             <p>
-                City:
-                <br>{{ form.city() }}
+                Name:
+                <br>{{ form.name() }}
             </p>
             <p>
-                Maximum Capacity (ft<sup>3</sup>):
-                <br>{{ form.max_volume() }}
+                Category:
+                <br>{{ form.category() }}
+            </p>
+            <p>
+                Description:
+                <br>{{ form.description() }}
+            </p>
+            <p>
+                Height:
+                <br>{{ form.height() }}
+            </p>
+            <p>
+                Length:
+                <br>{{ form.length() }}
+            </p>
+            <p>
+                Width:
+                <br>{{ form.width() }}
+            </p>
+            <p>
+                Warehouse:
+                <br>{{ form.warehouse_id() }}
             </p>
             <button>Submit</button>
             {% if errors %}

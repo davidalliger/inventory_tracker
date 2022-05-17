@@ -14,9 +14,8 @@ def get_warehouses():
 
 @warehouse_routes.route('/', methods=["POST"])
 @warehouse_routes.route('/<int:id>', methods=["POST"])
-def create_warehouse(id=None):
+def warehouse(id=None):
     form = WarehouseForm()
-    # form['csrf_token'].data = request.cookies['crsf_token']
     if form.validate_on_submit():
         warehouse = Warehouse.query.get(id) if id else Warehouse()
         form.populate_obj(warehouse)
