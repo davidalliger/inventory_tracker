@@ -1,4 +1,4 @@
-from flask import Flask, render_templatecd
+from flask import Flask, render_template
 from flask_migrate import Migrate
 from .config import Config
 from .api.warehouse_routes import warehouse_routes

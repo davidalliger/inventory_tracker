@@ -2,22 +2,18 @@
 <html>
     <head>
         <title>
-            Warehouses - Inventory Tracker
+            Items - Inventory Tracker
         </title>
     </head>
     <body>
         {% include 'navigation.html' %}
         <h1>Inventory Tracker</h1>
-        <h2>Warehouses</h2>
+        <h2>Items</h2>
         <ul>
-            {% for warehouse in warehouses %}
+            {% for item in items %}
                 <li>
                     <a href="warehouses/{{ warehouse.id }}">{{ warehouse.city }} - #{{ warehouse.id }}</a>
                 </li>
-            {% endfor %}
-        </ul>
-        <a href="/warehouses/new">
-            <button>Add</button>
-        </a>
+        </ul>>
     </body>
 </html>
