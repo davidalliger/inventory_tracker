@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 from app.forms.warehouse import WarehouseForm
 from ..models import Warehouse, db
 
@@ -13,22 +13,26 @@ def get_warehouses():
 
 
 @warehouse_routes.route('/', methods=["POST"])
-def create_warehouse():
+@warehouse_routes.route('/<int:id>', methods=["POST"])
+def create_warehouse(id=None):
     form = WarehouseForm()
-    form['csrf_token'].data = request.cookies['crsf_token']
+    # form['csrf_token'].data = request.cookies['crsf_token']
     if form.validate_on_submit():
-        new_warehouse = Warehouse()
-        form.populate_obj(new_warehouse)
+        warehouse = Warehouse.query.get(id) if id else Warehouse()
+        form.populate_obj(warehouse)
 
-        db.session.add(new_warehouse)
+        db.session.add(warehouse)
         db.session.commit()
 
-        return render_template('warehouse.html', id=new_warehouse.id)
+        return redirect(f'/warehouses/{warehouse.id}')
+    else:
+        print(form.errors)
+        return render_template('warehouse_form.html', title="Please Correct Errors", errors=form.errors, form=form)
 
 @warehouse_routes.route('/new')
 def new_warehouse():
     form = WarehouseForm()
-    return render_template('warehouse_form.html', form=form)
+    return render_template('warehouse_form.html', title="Add Warehouse", form=form, errors=None, path="/warehouses")
 
 @warehouse_routes.route('/<int:id>/edit')
 def edit_warehouse(id):
@@ -36,7 +40,7 @@ def edit_warehouse(id):
     warehouse = Warehouse.query.get(id)
     form.process(obj=warehouse)
 
-    return render_template('warehouse_form.html', form=form)
+    return render_template('warehouse_form.html', title="Edit Warehouse", form=form, errors=None, path=f"/warehouses/{warehouse.id}")
 
 @warehouse_routes.route('/<int:id>/delete')
 def delete_warehouse(id):

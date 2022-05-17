@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>New Warehouse - Inventory Tracker</title>
+        <title>{{ title }} - Inventory Tracker</title>
     </head>
     <body>
         {% include 'navigation.html' %}
         <h1>Inventory Tracker</h1>
-        <h2>Add a new warehouse</h2>
-        <form action="" method="post">
+        <h2>{{ title }}</h2>
+        <form action="{{ path }}" method="post">
             {{ form.hidden_tag() }}
-            <p>{{ form.name() }}</p>
-            <p>{{ form.city() }}</p>
-            <p>{{ form.max_volume() }}</p>
+            {% if id %}
+                <input type="hidden" value="{{ id }}">
+            {% endif %}
+                <p>
+                City:
+                <br>{{ form.city() }}
+            </p>
+            <p>
+                Maximum Capacity (sqft):
+                <br>{{ form.max_volume() }}
+            </p>
+            <button>Submit</button>
+            {% if errors %}
+                <p>Errors:</p>
+                <ul>
+                    {% for error in errors %}
+                        {% for item in errors[error] %}
+                            <li>
+                                {{ item }}
+                            </li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </form>
     </body>
 </html>

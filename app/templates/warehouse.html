@@ -13,13 +13,14 @@
             Location: {{ warehouse.city }}
         </p>
         <p>
-            Maximum Capacity: {{ warehouse.max_volume }} square feet
+            Maximum Capacity: {{ warehouse.max_volume }} sqft
         </p>
         <p>
             <a href="/warehouses/{{ warehouse.id }}/edit">
                 <button>Edit</button>
             </a>
-            <br>
+        </p>
+        <p>
             <a href="/warehouses/{{ warehouse.id }}/delete">
                 <button>Delete</button>
             </a>
