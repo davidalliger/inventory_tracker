@@ -11,8 +11,8 @@ flask-wtf = "*"
 jinja2 = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
-alembic = "*"
 flask-migrate = "*"
+alembic = "*"
 
 [dev-packages]
 

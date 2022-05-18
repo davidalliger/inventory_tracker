@@ -18,18 +18,21 @@
         <p>
             Description: {{ item.description }}
         </p>
+        <p>
+            Dimensions: {{ item.height }}ft x {{ item.length }}ft x {{ item.width }}ft
+        </p>
         {% if warehouse %}
             <p>
                 Warehouse: {{ warehouse.city }} - #{{ warehouse.id }}
             </p>
         {% endif %}
         <p>
-            <a href="/warehouses/{{ warehouse.id }}/edit">
+            <a href="/items/{{ item.id }}/edit">
                 <button>Edit</button>
             </a>
         </p>
         <p>
-            <a href="/warehouses/{{ warehouse.id }}/delete">
+            <a href="/items/{{ item.id }}/delete">
                 <button>Delete</button>
             </a>
         </p>

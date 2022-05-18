@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 from flask_migrate import Migrate
 from .config import Config
-from .routes.warehouse_routes import warehouse_routes
-from .routes.item_routes import item_routes
+from .routes import warehouse_routes
+from .routes import item_routes
 from .models import db
 
 app = Flask(__name__)

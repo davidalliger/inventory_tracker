@@ -1,8 +1,8 @@
-"""created item and warehouse models.
+"""empty message
 
-Revision ID: cb6fe311f9df
+Revision ID: 08e9ddff5ba0
 Revises: 
-Create Date: 2022-05-16 21:16:28.568879
+Create Date: 2022-05-17 19:02:46.734400
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'cb6fe311f9df'
+revision = '08e9ddff5ba0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -29,7 +29,9 @@ def upgrade():
     sa.Column('warehouse_id', sa.Integer(), nullable=True),
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('category', sa.String(), nullable=False),
-    sa.Column('volume', sa.Numeric(), nullable=False),
+    sa.Column('height', sa.Numeric(), nullable=False),
+    sa.Column('length', sa.Numeric(), nullable=False),
+    sa.Column('width', sa.Numeric(), nullable=False),
     sa.Column('description', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['warehouse_id'], ['warehouses.id'], ),
     sa.PrimaryKeyConstraint('id')

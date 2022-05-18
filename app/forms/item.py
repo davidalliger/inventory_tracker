@@ -1,7 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, TextAreaField, DecimalField, IntegerField
+from wtforms import StringField, SelectField, TextAreaField, DecimalField
 from wtforms.validators import ValidationError
 from ..models import Warehouse
+# from wtforms.ext.sqlalchemy.fields import QuerySelectField
+# from sqlalchemy import null
 
 # def validate_city(form, field):
 #     city = field.data
@@ -13,14 +15,15 @@ from ..models import Warehouse
 #     if max_volume <= 0:
 #         raise ValidationError('Maximum capacity must be greater than zero.')
 
-warehouses = Warehouse.query.order_by(Warehouse.city).all()
-warehouses = [(warehouse.id, f'{warehouse.city} - #{warehouse.id}') for warehouse in warehouses]
-
 class ItemForm(FlaskForm):
-    name = StringField("Name", validators=[])
-    category = SelectField("Category", choices=[('appliances','Appliances'), ('cleaners', 'Cleaners'), ('decor', 'Decor'), ('furniture','Furniture'), ('tools', 'Tools')], validators=[])
-    description = TextAreaField("Description", validators=[])
-    height = DecimalField("Height", validators=[])
-    length = DecimalField("Length", validators=[])
-    width = DecimalField("Width", validators=[])
-    warehouse_id = SelectField("Warehouse", choices=[(None, "Unassigned")] + warehouses, validators=[])
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.warehouse_id.choices = [(0, "Unassigned")] + [(warehouse.id, f'{warehouse.city} - #{warehouse.id}') for warehouse in Warehouse.query.order_by(Warehouse.city).all()]
+
+    name = StringField("Name")
+    category = SelectField("Category", choices=[('Appliances','Appliances'), ('Cleaners', 'Cleaners'), ('Decor', 'Decor'), ('Furniture','Furniture'), ('Tools', 'Tools')])
+    description = TextAreaField("Description")
+    height = DecimalField("Height")
+    length = DecimalField("Length")
+    width = DecimalField("Width")
+    warehouse_id = SelectField("Warehouse")

@@ -12,8 +12,12 @@
         <ul>
             {% for item in items %}
                 <li>
-                    <a href="items/{{ item.id }}">{{ item.name }}</a>
+                    <a href="/items/{{ item.id }}">{{ item.name }}</a>
                 </li>
-        </ul>>
+            {% endfor %}
+        </ul>
+        <a href="/items/new">
+            <button>Add</button>
+        </a>
     </body>
 </html>

@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, redirect
-from app.forms.item import ItemForm
+
+from app.models import warehouse
+from ..forms import ItemForm
 from ..models import db, Item, Warehouse
+from sqlalchemy import null
 
 
 item_routes = Blueprint('items', __name__)
@@ -15,9 +18,20 @@ def get_items():
 @item_routes.route('/<int:id>', methods=["POST"])
 def item(id=None):
     form = ItemForm()
+    # print(form)
+    # print(form.data)
+    # print(form.data['warehouse_id'])
+    # print(form.data)
     if form.validate_on_submit():
         item = Item.query.get(id) if id else Item()
+
         form.populate_obj(item)
+        print(item)
+        print(item.warehouse_id)
+        if item.warehouse_id == '0':
+            item.warehouse_id = null()
+        print(item.warehouse_id)
+
 
         db.session.add(item)
         db.session.commit()

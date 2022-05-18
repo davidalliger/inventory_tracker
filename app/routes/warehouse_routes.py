@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect
-from app.forms.warehouse import WarehouseForm
+from ..forms import WarehouseForm
 from ..models import Warehouse, db
 
 
