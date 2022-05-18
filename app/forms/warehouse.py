@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, DecimalField
 from wtforms.validators import ValidationError, StopValidation
+from ..models import Warehouse
 
 def validate_city(form, field):
     city = field.data

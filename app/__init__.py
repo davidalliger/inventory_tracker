@@ -4,8 +4,11 @@ from .config import Config
 from .routes import warehouse_routes
 from .routes import item_routes
 from .models import db
+from .seeds import seed_commands
 
 app = Flask(__name__)
+
+app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
 
