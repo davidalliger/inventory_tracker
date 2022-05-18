@@ -25,5 +25,15 @@
                 <button>Delete</button>
             </a>
         </p>
+        {% if inventory %}
+            <h3>Inventory for Warehouse #{{ warehouse.id }}:</h3>
+            <ul>
+                {% for item in inventory %}
+                    <li>
+                        <a href="/items/{{ item.id }}">{{ item.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </body>
 </html>

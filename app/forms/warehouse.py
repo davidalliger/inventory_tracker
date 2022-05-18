@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, DecimalField
-from wtforms.validators import ValidationError
+from wtforms.validators import ValidationError, StopValidation
 
 def validate_city(form, field):
     city = field.data
@@ -9,6 +9,10 @@ def validate_city(form, field):
 
 def validate_max_volume(form, field):
     max_volume = field.data
+    try:
+        float(max_volume)
+    except:
+        raise StopValidation('Maximum capacity must be a number')
     if max_volume <= 0:
         raise ValidationError('Maximum capacity must be greater than zero.')
 

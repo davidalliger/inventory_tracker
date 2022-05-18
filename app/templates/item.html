@@ -23,7 +23,7 @@
         </p>
         {% if warehouse %}
             <p>
-                Warehouse: {{ warehouse.city }} - #{{ warehouse.id }}
+                Warehouse: <a href="/warehouses/{{ warehouse.id }}">{{ warehouse.city }} - #{{ warehouse.id }}</a>
             </p>
         {% endif %}
         <p>

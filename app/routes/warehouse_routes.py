@@ -55,5 +55,8 @@ def delete_warehouse(id):
 @warehouse_routes.route('/<int:id>')
 def warehouse_detail(id):
     warehouse = Warehouse.query.get(id)
+    inventory = None
+    if len(warehouse.inventory) > 0:
+        inventory = warehouse.inventory
 
-    return render_template('warehouse.html', warehouse=warehouse)
+    return render_template('warehouse.html', warehouse=warehouse, inventory=inventory)
