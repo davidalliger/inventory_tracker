@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, TextAreaField, DecimalField
 from wtforms.validators import ValidationError
 from ..models import Warehouse
+from .form_utils import ValidWarehouse
 # from wtforms.ext.sqlalchemy.fields import QuerySelectField
 # from sqlalchemy import null
 
@@ -9,11 +10,6 @@ from ..models import Warehouse
 #     city = field.data
 #     if len(city) < 3:
 #         raise ValidationError('City must be at least three characters long.')
-
-# def validate_max_volume(form, field):
-#     max_volume = field.data
-#     if max_volume <= 0:
-#         raise ValidationError('Maximum capacity must be greater than zero.')
 
 class ItemForm(FlaskForm):
     def __init__(self, *args, **kwargs):
@@ -26,4 +22,4 @@ class ItemForm(FlaskForm):
     height = DecimalField("Height")
     length = DecimalField("Length")
     width = DecimalField("Width")
-    warehouse_id = SelectField("Warehouse")
+    warehouse_id = SelectField("Warehouse", validators=[ValidWarehouse('height', 'length', 'width')])
