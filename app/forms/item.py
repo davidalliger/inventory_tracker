@@ -48,30 +48,14 @@ categories = ['Appliances', 'Cleaners', 'Decor', 'Furniture', 'Tools']
 class ItemForm(FlaskForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.warehouse_id.choices = [(0, 'Unassigned')] + [(warehouse.id, f'{warehouse.city} - #{warehouse.id}') for warehouse in Warehouse.query.order_by(Warehouse.city).all()]
+        self.warehouse_id.choices = [(0, 'Unassigned')] + \
+                                    [(warehouse.id, f'{warehouse.city} - #{warehouse.id}') for warehouse in Warehouse.query.order_by(Warehouse.city).all()]
 
-    name = StringField('Name', validators=[
-                                                DataRequired('Please enter a name'),
-                                                validate_name
-                                            ])
+    name = StringField('Name', validators=[DataRequired('Please enter a name'), validate_name])
     category = SelectField('Category', choices=[('Appliances','Appliances'), ('Cleaners', 'Cleaners'), ('Decor', 'Decor'), ('Furniture','Furniture'), ('Tools', 'Tools')],
-                                        validators=[
-                                                        DataRequired('Please select a category'),
-                                                        AnyOf(categories)
-                                                    ])
-    description = TextAreaField('Description', validators=[
-                                                                DataRequired('Please enter a description'),
-                                                                validate_description
-                                                            ])
-    height = DecimalField('Height', validators=[
-                                                    validate_height
-                                                ])
-    length = DecimalField('Length', validators=[
-                                                    validate_length
-                                                ])
-    width = DecimalField('Width', validators=[
-                                                    validate_width
-                                                ])
-    warehouse_id = SelectField('Warehouse', validators=[
-                                                        ValidWarehouse('height', 'length', 'width')
-                                                        ])
+                                        validators=[DataRequired('Please select a category'), AnyOf(categories)])
+    description = TextAreaField('Description', validators=[DataRequired('Please enter a description'), validate_description])
+    height = DecimalField('Height', validators=[validate_height])
+    length = DecimalField('Length', validators=[validate_length])
+    width = DecimalField('Width', validators=[validate_width])
+    warehouse_id = SelectField('Warehouse', validators=[ValidWarehouse('height', 'length', 'width')])

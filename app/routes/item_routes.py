@@ -18,10 +18,6 @@ def get_items():
 @item_routes.route('/<int:id>', methods=["POST"])
 def item(id=None):
     form = ItemForm()
-    # print(form)
-    # print(form.data)
-    # print(form.data['warehouse_id'])
-    # print(form.data)
     if form.validate_on_submit():
         item = Item.query.get(id) if id else Item()
 
