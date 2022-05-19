@@ -2,7 +2,7 @@
 
 ## Instructions
 
-If you are viewing this application in [Replit](https://replit.com/@davidalliger/inventorytracker), simply click the RUN button at the top of the page. Then click <a href="https://inventorytracker.davidalliger.repl.co/" target="_blank">here</a> to view the app in a separate window. You can click on links to navigate through the app, and buttons to add, edit or delete items and warehouses.
+To view this application in [Replit](https://replit.com/@davidalliger/inventorytracker), first click the RUN button at the top of the page. Then click <a href="https://inventorytracker.davidalliger.repl.co/" target="_blank">here</a> to view the app in a separate window. You can click on links to navigate through the app, and buttons to add, edit or delete items and warehouses.
 
 ## Description
 
