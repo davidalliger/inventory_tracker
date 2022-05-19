@@ -4,6 +4,8 @@
 
 If you are viewing this application in [Replit](https://replit.com/@davidalliger/inventorytracker), simply click the RUN button at the top of the page. Then click [here](https://inventorytracker.davidalliger.repl.co/) to view the app in a separate window. You can click on links to navigate through the app, and buttons to add, edit or delete items and warehouses.
 
+## Description
+
 This is a simple inventory tracker web application. Users can add items, edit items, delete items, view items in a list, and inspect the details of a particular item. 
 They can also add warehouses, edit warehouses, delete warehouses, view warehouses in a list, inspect the details of a particular warehouse, and assign items to warehouses...
 as long as they fit! A warehouse's remaining capacity (current capacity) will update as items are added and/or removed, and will be displayed on the warehouse detail page.
