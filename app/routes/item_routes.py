@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, redirect
 
-from app.models import warehouse
 from ..forms import ItemForm
 from ..models import db, Item, Warehouse
 from sqlalchemy import null
